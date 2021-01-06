@@ -12,7 +12,12 @@ public class HomeController {
     private HomeService homeService;
 
     @GetMapping("/add")
-    public void add(String name,String adress){
-        homeService.add(name, adress);
+    public void add(String name,String address){
+        homeService.add(name, address);
+    }
+
+    @GetMapping("/findByName")
+    public String findByName(String name){
+        return homeService.findByName(name).toString();
     }
 }
