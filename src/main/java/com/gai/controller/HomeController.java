@@ -38,4 +38,12 @@ public class HomeController {
         homeService2.add("db2","db2 address");
     }
 
+    @GetMapping("/addError2")
+    @Transactional
+    public void addError2(){
+        homeService2.add("db2","db2 address");
+        int i = 1/0;
+        homeService.add("db1","db1 address");
+    }
+
 }
