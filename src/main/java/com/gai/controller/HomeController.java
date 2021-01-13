@@ -1,6 +1,7 @@
 package com.gai.controller;
 
 import com.gai.service.db1.HomeService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HomeController {
+    private static Logger logger = Logger.getLogger(HomeController.class);
 
     @Autowired
     private HomeService homeService;
@@ -18,6 +20,7 @@ public class HomeController {
     @GetMapping("/add")
     public void add(String name,String address){
         homeService.add(name, address);
+        logger.info("log4j输出添加成功!");
     }
 
     @GetMapping("/findByName")
