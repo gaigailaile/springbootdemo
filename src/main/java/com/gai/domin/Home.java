@@ -1,6 +1,8 @@
 package com.gai.domin;
 
-public class Home {
+import java.io.Serializable;
+
+public class Home implements Serializable {
     private Integer id;
 
     private String name;
