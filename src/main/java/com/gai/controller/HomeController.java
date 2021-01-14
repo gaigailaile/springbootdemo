@@ -1,8 +1,10 @@
 package com.gai.controller;
 
+import com.gai.domin.Home;
 import com.gai.service.db1.HomeService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +18,9 @@ public class HomeController {
 
     @Autowired
     private com.gai.service.db2.HomeService homeService2;
+
+    @Value("${name}")
+    private String name;
 
     @GetMapping("/add")
     public void add(String name,String address){
@@ -31,6 +36,12 @@ public class HomeController {
     @GetMapping("/findByName2")
     public String findByName2(String name){
         return homeService2.findByName(name).toString();
+    }
+
+    @GetMapping("/async")
+    public String findByNameAsync(String name){
+        homeService.findByNameAsync(name);
+        return "调用成功";
     }
 
     @GetMapping("/addError")
@@ -49,4 +60,8 @@ public class HomeController {
         homeService.add("db1","db1 address");
     }
 
+    @GetMapping("/getValue")
+    public String getValue(){
+        return name;
+    }
 }

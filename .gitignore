@@ -49,3 +49,6 @@
 /.idea/modules.xml
 /.idea/springbootdemo.iml
 /.idea/vcs.xml
+/.idea/*
+/target/*
+/transaction-logs/*
